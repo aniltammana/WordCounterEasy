@@ -1,0 +1,36 @@
+<div class="container">
+  <header class="header">
+    <h1>Word Counter Easy</h1>
+  </header>
+  <div>Words: {{ userInput.wordCount }}</div>
+  <div>Characters: {{ userInput.characterCount }}</div>
+  <br />
+  <div id="divUserInput" [innerHTML]="htmlContent" style="display: none;"></div>
+  <angular-editor
+    autofocus="true"
+    id="editor2"
+    class="editor2"
+    (onchange)="onChange($event)"
+    (ngModelChange)="onChange($event)"
+    [(ngModel)]="htmlContent"
+    [config]="config"
+  ></angular-editor>
+  <textarea
+    class="content"
+    style="display: none;"
+    (keydown)="onFocusOut($event)"
+    >{{ content }}</textarea
+  >
+  <div class="footer">
+    <button class="material-icons" (click)="record($event)">
+      settings_voice
+    </button>
+  </div>
+</div>
+<div class="overlay voice show" (click)="hideImage()">
+  <img
+    width="350"
+    src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/bddf8a11582713.560fa0db0dee5.gif"
+  />
+  <router-outlet></router-outlet>
+</div>
